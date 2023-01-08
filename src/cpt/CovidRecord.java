@@ -41,4 +41,66 @@ public class CovidRecord {
         this.lngPopulation = lngPopulation;
     }
     
+    /**
+    * Returns the date of when the data was collected
+    *
+    * @return dateReported, the date
+    */	
+    public Date getDate() { 
+        return this.dateReported; 
+    }
+
+    /**
+    * Returns the location where the data is from
+    *
+    * @return strLocation, the country name
+    */	
+    public String getLocation() { 
+        return this.strLocation; 
+    }
+
+    /**
+    * Returns the total number of cases in a country
+    *
+    * @return intTotalCases, the total number of cases
+    */	
+    public int getTotalCases() { 
+        return this.intTotalCases; 
+    }
+
+    /**
+    * Returns the total number of deaths in a country
+    *
+    * @return intTotalDeaths, the total number of deaths
+    */	
+    public int getTotalDeaths() { 
+        return this.intTotalDeaths; 
+    }
+
+    /**
+    * Returns the number of cases per one million people
+    *
+    * @return dblTotalCasesPerMillion, the number of cases per one million people
+    */	
+    public double getTotalCasesPerMillion() { 
+        return this.dblTotalCasesPerMillion; 
+    }
+
+    /**
+    * Returns the number of deaths per one million people
+    *
+    * @return dblTotalDeathsPerMillion, the number of deaths per one million people
+    */	
+    public double getTotalDeathsPerMillion() { 
+        return this.dblTotalDeathsPerMillion; 
+    }
+
+    /**
+    * Returns the total population of a country
+    *
+    * @return lngPopulation, the total population of a country
+    */	
+    public long getPopulation() { 
+        return this.lngPopulation; 
+    }    
 }
