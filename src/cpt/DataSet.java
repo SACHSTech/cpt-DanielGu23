@@ -11,6 +11,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 
+/**
+* DataSet class file
+* @author: D. Gu
+* 
+*/
+
 public class DataSet {
 
     // Initialize the set of default selected countries
