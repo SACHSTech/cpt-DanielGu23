@@ -42,6 +42,8 @@ public class DataSet {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String strLine;
         	String strLastCountry = ""; 
+            // Read the first line as it is the header 
+            br.readLine();
             // Continue to read as long as there is a next line
             while ((strLine = br.readLine()) != null) {   
                 // Split each line into dates, country name, etc
@@ -79,7 +81,7 @@ public class DataSet {
      * 
      * @param - values, such as date, country, etc.
      * 
-     * @return record, a newly created record
+     * @return a newly created record
      */    
     private static CovidRecord createRecord(String[] values) {
         CovidRecord record = null;
@@ -111,7 +113,7 @@ public class DataSet {
      * @param - strValue, the String value to be parsed 
      * @param - defaultValue, the default value to be returned if parsing failed
      * 
-     * @return  the integer value represented by the string.
+     * @return  the integer value represented by the string
      */    
     private static int parseToInt(String strValue, int defaultValue) {
         try {
@@ -128,7 +130,7 @@ public class DataSet {
      * @param - strValue, the String value to be parsed 
      * @param - defaultValue, the default value to be returned if parsing failed
      * 
-     * @return  the long value represented by the string.
+     * @return  the long value represented by the string
      */    
     private static long parseToLong(String strValue, long defaultValue) {
         try {
@@ -145,7 +147,7 @@ public class DataSet {
      * @param - strValue, the String value to be parsed 
      * @param - defaultValue, the default value to be returned if parsing failed
      * 
-     * @return  the double value represented by the string.
+     * @return  the double value represented by the string
      */    
     private static double parseToDouble(String strValue, double defaultValue) {
         try {
@@ -155,5 +157,46 @@ public class DataSet {
            return defaultValue;
         }
     }    
+
+    /**
+     * Returns all of the data records
+     * 
+     * @return all data records
+     */ 
+    public List<CovidRecord> getRecords() {
+        return this.records;
+    }
+    
+    
+    /**
+     * Returns records for a specific country
+     * 
+     * @param - country, the name of the country 
+     * 
+     * @return all records of the country
+     */ 
+    public List<CovidRecord> getCountryRecords(String country) {
+        return this.countryRecords.get(country);
+    }
+    
+    
+    /**
+     * Returns selected countries
+     * 
+     * @return selected countries
+     */ 
+    public List<String> getSelectedCountries() {
+        return this.selectedCountries;
+    }
+    
+    
+    /**
+     * Returns unselected countries
+     * 
+     * @return unselected countries
+     */ 
+    public List<String> getUnselectedCountries() {
+        return this.unselectedCountries;
+    }
         
 }
