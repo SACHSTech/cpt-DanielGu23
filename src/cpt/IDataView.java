@@ -5,7 +5,8 @@ import javafx.scene.layout.HBox;
 
 /**
  * IDataView class file
- *
+ * @author: D. Gu
+ * 
  */    
 
 public interface IDataView {
