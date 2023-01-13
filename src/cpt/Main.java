@@ -9,12 +9,14 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.cell.CheckBoxListCell;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -31,6 +33,7 @@ import javafx.scene.text.Text;
 public class Main extends Application {
 	private DataSet dataSet;
 	private BorderPane border;
+	private IDataView centerView;
 	public static Scene mainScene;
 
 	/**
@@ -54,7 +57,11 @@ public class Main extends Application {
 		primaryStage.setTitle("COVID-19 Data Explorer");	  
 		dataSet = new DataSet();
 		border = new BorderPane();
-		border.setLeft(addLeftBox(dataSet));			            	    	
+		border.setLeft(addLeftBox(dataSet));
+		border.setBottom(addBottomBox());
+		centerView = new LineChartView();
+		updateCenterView();
+
 		// Set the main scene
 		mainScene = new Scene(border, 954, 600);
 		primaryStage.setScene(mainScene);
@@ -91,15 +98,17 @@ public class Main extends Application {
 		listView.setCellFactory(CheckBoxListCell.forListView(new Callback<String, ObservableValue<Boolean>>() {
 			@Override
 			public ObservableValue<Boolean> call(String item) {
+				// Select and unselect a country using checkboxes
 				BooleanProperty observable = new SimpleBooleanProperty(dataSet.getSelectedCountries().contains(item));
 				observable.addListener((obs, wasSelected, isNowSelected) -> {
-					if(isNowSelected) {
+					if (isNowSelected) {
 						dataSet.getUnselectedCountries().remove(item);
 						dataSet.getSelectedCountries().add(item);
 					}else {
 						dataSet.getSelectedCountries().remove(item);
 						dataSet.getUnselectedCountries().add(item);	                		
 					}
+					updateCenterView();
 					// Check that it is working
 					System.out.println("Check box for "+item+" changed from "+wasSelected+" to "+isNowSelected);
 					}
@@ -111,4 +120,42 @@ public class Main extends Application {
 		VBox.setVgrow(listView, javafx.scene.layout.Priority.ALWAYS);
 		return vbox;
 	}		
+
+	/**
+     * A method that creates buttons on the bottom of the screen
+     * 
+     * @return Hbox layout container
+     */ 
+	private HBox addBottomBox() {
+		HBox bottomPane = new HBox();
+		bottomPane.setPadding(new Insets(15, 12, 15, 12));
+		bottomPane.setSpacing(10);
+		bottomPane.setStyle("-fx-background-color: #AABBCC;");
+		// Create button for line chart
+		Button buttonLineChart = new Button("Line chart");
+		buttonLineChart.setPrefSize(100, 20);
+		buttonLineChart.setOnAction(event -> {centerView = new LineChartView(); updateCenterView();});
+		// Create button for pie chart
+		Button buttonPieChart = new Button("Pie chart");
+		buttonLineChart.setPrefSize(100, 20);
+		buttonLineChart.setOnAction(event -> {});		    
+		// Create button for table
+		Button buttonTable = new Button("Table");
+		buttonTable.setPrefSize(100, 20);		    		    
+		buttonTable.setOnAction(event -> {});
+		
+		bottomPane.getChildren().addAll(buttonLineChart, buttonPieChart, buttonTable);
+		return bottomPane;			
+	}
+
+    /**
+     * A method that organizes the layout of the program 
+     * 
+     * @return nothing
+     */ 
+	private void updateCenterView() {
+		border.setTop(centerView.updateTopButtons());
+		border.setCenter(centerView.display(dataSet));
+	}
+
 }
