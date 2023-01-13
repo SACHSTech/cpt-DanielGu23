@@ -37,7 +37,7 @@ public class DataSet {
     
 
     /**
-     * A method reads all of the data from the csv file
+     * A method that reads all of the data from the csv file
      * 
      * @param - fileName, the name of the file which will be read
      * 
