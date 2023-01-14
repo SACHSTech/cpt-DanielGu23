@@ -149,7 +149,7 @@ public class Main extends Application {
 	}
 
     /**
-     * A method that organizes the layout of the program 
+     * Show the selected graph in the center
      * 
      * @return nothing
      */ 
