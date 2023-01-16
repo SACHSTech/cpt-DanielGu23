@@ -137,12 +137,12 @@ public class Main extends Application {
 		buttonLineChart.setOnAction(event -> {centerView = new LineChartView(); updateCenterView();});
 		// Create button for pie chart
 		Button buttonPieChart = new Button("Pie chart");
-		buttonLineChart.setPrefSize(100, 20);
-		buttonLineChart.setOnAction(event -> {});		    
+		buttonPieChart.setPrefSize(100, 20);
+		buttonPieChart.setOnAction(event -> {System.out.println("Pie chart pressed");});    
 		// Create button for table
 		Button buttonTable = new Button("Table");
 		buttonTable.setPrefSize(100, 20);		    		    
-		buttonTable.setOnAction(event -> {});
+		buttonTable.setOnAction(event -> {centerView = new TableDataView(border); updateCenterView();});
 		
 		bottomPane.getChildren().addAll(buttonLineChart, buttonPieChart, buttonTable);
 		return bottomPane;			
