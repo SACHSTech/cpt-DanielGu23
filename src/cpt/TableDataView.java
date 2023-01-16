@@ -76,6 +76,8 @@ public class TableDataView implements IDataView {
 			}
 		}
 		// Built in sorting disabled due to requirements
+		data = Sort.mergeSort(data, this.comparator);
+		
 		// Create a column for countries
 		TableColumn<CovidRecord, String> countryName = new TableColumn<CovidRecord, String>();
 		countryName.setText("Location");
