@@ -1,7 +1,7 @@
 package cpt;
 
 import java.io.*;
-
+import java.time.LocalDate;
 
 import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
@@ -21,7 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-
+import javafx.scene.control.DatePicker;
 
 
 /**
@@ -35,6 +35,7 @@ public class Main extends Application {
 	private BorderPane border;
 	private IDataView centerView;
 	public static Scene mainScene;
+	private DatePicker datePicker;
 
 	/**
  	 * Main method that launches Javafx
@@ -54,7 +55,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		// Add the title and a list of countries    	
-		primaryStage.setTitle("COVID-19 Data Explorer");	  
+		primaryStage.setTitle("COVID-19 Data Explorer");
+		datePicker = new DatePicker();
+		datePicker.setValue(LocalDate.of(2022, 12, 26));	  
 		dataSet = new DataSet();
 		border = new BorderPane();
 		border.setLeft(addLeftBox(dataSet));
@@ -154,7 +157,7 @@ public class Main extends Application {
      * @return nothing
      */ 
 	private void updateCenterView() {
-		border.setTop(centerView.updateTopButtons());
+		border.setTop(centerView.updateTopButtons(datePicker));
 		border.setCenter(centerView.display(dataSet));
 	}
 

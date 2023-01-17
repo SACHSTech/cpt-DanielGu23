@@ -10,6 +10,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.HBox;
+import javafx.scene.control.DatePicker;
 
 
  /**
@@ -64,7 +65,7 @@ public class LineChartView implements IDataView {
      * @return Hbox layout container
      */ 
 	@Override
-	public HBox updateTopButtons() {
+	public HBox updateTopButtons(DatePicker datePicker) {
 		HBox hbox = new HBox();
 		hbox.setPadding(new Insets(15, 12, 15, 12));
 		hbox.setSpacing(10);

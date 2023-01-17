@@ -134,8 +134,9 @@ public class TableDataView implements IDataView {
 	*
 	* @return the layout container with all of the buttons
     */	
-	public HBox updateTopButtons() {
+	public HBox updateTopButtons(DatePicker datePicker) {
 		// Initialize the layout container
+		this.datePicker = datePicker;
 		HBox hbox = new HBox();
 		hbox.setPadding(new Insets(15, 12, 15, 12));
 		hbox.setSpacing(10);
@@ -148,8 +149,6 @@ public class TableDataView implements IDataView {
 				setDisable(item.isBefore(LocalDate.of(2020, 1, 22)) || item.isAfter(LocalDate.of(2022, 12, 26)));
 			}	
 		});
-	    // Set default date 
-	    datePicker.setValue(LocalDate.of(2022, 12, 26));
 	    // Add an event listener to allow the user to change the date 
 	    datePicker.valueProperty().addListener((ChangeListener<? super LocalDate>) new ChangeListener<LocalDate>() {
 	      @Override
