@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Collections;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -22,6 +23,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.scene.control.CheckBox;
 
 /**
 * TableDataView class file
@@ -35,6 +37,7 @@ public class TableDataView implements IDataView {
 	private DataSet dataSet = null;
 	private BorderPane border = null;
 	private Comparator<CovidRecord> comparator = Comparator.comparing(CovidRecord::getLocation);
+	private CheckBox descending = new CheckBox("Descending");
 
 	/**
     * Constructor - Creates a table of the Covid-19 data
@@ -77,6 +80,10 @@ public class TableDataView implements IDataView {
 		}
 		// Built in sorting disabled due to requirements
 		data = Sort.mergeSort(data, this.comparator);
+		// Reverse the list if in descending order
+		if (descending.isSelected()) {
+			Collections.reverse(data);	
+		}
 		
 		// Create a column for countries
 		TableColumn<CovidRecord, String> countryName = new TableColumn<CovidRecord, String>();
@@ -166,7 +173,7 @@ public class TableDataView implements IDataView {
 		buttonTotalCasesPerMillion.setPrefSize(150, 20);
 		buttonTotalCasesPerMillion.setOnAction(event -> sortTable(Comparator.comparing(CovidRecord::getTotalCasesPerMillion)));
 		
-		hbox.getChildren().addAll(text, datePicker, buttonSortLocation, buttonSortTotalCases, buttonTotalCasesPerMillion);
+		hbox.getChildren().addAll(text, datePicker, buttonSortLocation, buttonSortTotalCases, buttonTotalCasesPerMillion, descending);
 		return hbox;
 	}
 	
