@@ -1,6 +1,5 @@
 package cpt;
 
-import java.text.DecimalFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -15,7 +14,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.input.MouseEvent;
@@ -82,6 +80,38 @@ public class PieChartView implements IDataView {
 		return pieChart;
 	}
 
+	/**
+     * A method that creates a layout container at the top of the screen
+	 * 
+	 * @param - datePicker, a pop-up calender that lets the user pick a date
+     * 
+     * @return Hbox layout container
+     */ 
+	@Override
+	public HBox updateTopButtons(DatePicker datePicker) {
+		this.datePicker = datePicker;
+		HBox hbox = new HBox();
+		hbox.setPadding(new Insets(15, 12, 15, 12));
+		hbox.setSpacing(10);
+		hbox.setStyle("-fx-background-color: #AABBCC;");
+		Text text = new Text("Select date");
+		datePicker.setDayCellFactory(d -> new DateCell() {
+			@Override
+			public void updateItem(LocalDate item, boolean empty) {
+				super.updateItem(item, empty);
+				setDisable(item.isBefore(LocalDate.of(2020, 1, 22)) || item.isAfter(LocalDate.of(2022, 12, 26)));
+			}	
+		});
+	    //Add an event listener for date selection change
+	    datePicker.valueProperty().addListener((ChangeListener<? super LocalDate>) new ChangeListener<LocalDate>() {
+	      @Override
+	      public void changed(ObservableValue<? extends LocalDate> observable, LocalDate oldValue, LocalDate newValue) {
+	    	  border.setCenter(display(dataSet));
+	      }
+	    }); 	    	    
+		hbox.getChildren().addAll(text, datePicker);
+		return hbox;	    
+	}
 	
 
 }
