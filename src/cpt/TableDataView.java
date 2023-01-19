@@ -132,6 +132,8 @@ public class TableDataView implements IDataView {
 	/**
     * A method that creates buttons on the top of the screen
 	*
+	* @param - datePicker, a pop-up calender that lets the user pick a date
+	* 
 	* @return the layout container with all of the buttons
     */	
 	public HBox updateTopButtons(DatePicker datePicker) {
