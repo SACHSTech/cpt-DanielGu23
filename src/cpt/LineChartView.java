@@ -61,6 +61,8 @@ public class LineChartView implements IDataView {
 
 	/**
      * A method that creates a layout container at the top of the screen
+	 * 
+	 * @param - datePicker, a pop-up calender that lets the user pick a date
      * 
      * @return Hbox layout container
      */ 
