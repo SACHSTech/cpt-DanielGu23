@@ -141,7 +141,7 @@ public class Main extends Application {
 		// Create button for pie chart
 		Button buttonPieChart = new Button("Pie chart");
 		buttonPieChart.setPrefSize(100, 20);
-		buttonPieChart.setOnAction(event -> {System.out.println("Pie chart pressed");});    
+		buttonPieChart.setOnAction(event -> {centerView = new PieChartView(border); updateCenterView();});    
 		// Create button for table
 		Button buttonTable = new Button("Table");
 		buttonTable.setPrefSize(100, 20);		    		    
