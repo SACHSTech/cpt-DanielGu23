@@ -20,7 +20,7 @@ import javafx.scene.control.DatePicker;
  */    
 public class LineChartView implements IDataView {
 
-	/**
+    /**
      * A method that displays the line chart for selected countries
      * 
      * @param - dataSet, the data 
@@ -59,10 +59,10 @@ public class LineChartView implements IDataView {
 		return linechart;
 	}
 
-	/**
+    /**
      * A method that creates a layout container at the top of the screen
-	 * 
-	 * @param - datePicker, a pop-up calender that lets the user pick a date
+     * 
+     * @param - datePicker, a pop-up calender that lets the user pick a date
      * 
      * @return Hbox layout container
      */ 
