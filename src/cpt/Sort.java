@@ -12,15 +12,15 @@ import java.util.List;
 
 public class Sort {
 	
-	/**
-    * A method that merges a list of CovidRecord objects
+       /**
+        * A method that merges a list of CovidRecord objects
 	*
 	* @param - left, the left half of the list
 	* @param - right, the right half of the list
 	* @param - comparator, compares elements in the list and determines their order
 	* 
 	* @return a new list of merged data 
-    */	
+        */	
 	private static List<CovidRecord> merge(List<CovidRecord> left, List<CovidRecord> right, Comparator<CovidRecord> comparator) {
 		// Initialize variables
 		List<CovidRecord> result = new ArrayList<>(); 
@@ -53,13 +53,13 @@ public class Sort {
 	}
 	
 	/** 
-    * A method that sorts a list of CovidRecord objects
+        * A method that sorts a list of CovidRecord objects
 	*
 	* @param - records, the list of covid-19 data
 	* @param - comparator, compares elements in the list and determines their order
 	* 
 	* @return a new list of sorted data 
-    */	
+        */	
 	public static List<CovidRecord> mergeSort(List<CovidRecord> records, Comparator<CovidRecord> comparator) {
 		int intSize = records.size();
 		if (intSize <= 1) {
