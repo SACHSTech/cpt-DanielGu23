@@ -8,3 +8,4 @@ I am utilizing a data set containing the latest covid-19 statistics, including t
 I selected this data set for my cpt because I am interested in the covid-19 statistics of Canada. I am particularly interested in learning about the current virus variant and its severity compared to previous versions. This information will help me make informed decisions when taking precautions to protect myself. 
 
 Demo Video: https://drive.google.com/file/d/1jWUszCg4jnnDkW9ZsT7YjEGoIj6EBtyl/view?usp=sharing 
+Course Connections Video: https://drive.google.com/file/d/1X5sKGxXYLGUOQh4OtMJk0h9_aYsRKQne/view?usp=sharing
