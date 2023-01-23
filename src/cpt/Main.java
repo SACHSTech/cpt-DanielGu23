@@ -122,7 +122,7 @@ public class Main extends Application {
 		return vbox;
 	}		
 
-	/**
+    /**
      * A method that creates buttons on the bottom of the screen
      * 
      * @return Hbox layout container
