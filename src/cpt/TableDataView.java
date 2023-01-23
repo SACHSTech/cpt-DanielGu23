@@ -39,23 +39,23 @@ public class TableDataView implements IDataView {
 	private Comparator<CovidRecord> comparator = Comparator.comparing(CovidRecord::getLocation);
 	private CheckBox descending = new CheckBox("Descending");
 
-	/**
-    * Constructor - Creates a table of the Covid-19 data
-    *
-    * @param border - The layout container
-    */	
+     /**
+      * Constructor - Creates a table of the Covid-19 data
+      *
+      * @param border - The layout container
+      */	
 	TableDataView(BorderPane border){
 		this.border = border;
 	}
 
-	/**
-    * A method that creates a table with all the data from the csv file 
-	*
-    * @param dataset - The data from the csv file
-	* 
-	* @return The data table with all of the data
-    */	
-	@Override
+      /**
+      * A method that creates a table with all the data from the csv file 
+      *
+      * @param dataset - The data from the csv file
+      * 
+      * @return The data table with all of the data
+      */	
+        @Override
 	public Node display(DataSet dataSet) {
 		this.dataSet = dataSet;
 		List<CovidRecord> data = new ArrayList<>();
@@ -130,12 +130,12 @@ public class TableDataView implements IDataView {
 
 	@Override
 	/**
-    * A method that creates buttons on the top of the screen
+        * A method that creates buttons on the top of the screen
 	*
 	* @param - datePicker, a pop-up calender that lets the user pick a date
 	* 
 	* @return the layout container with all of the buttons
-    */	
+        */	
 	public HBox updateTopButtons(DatePicker datePicker) {
 		// Initialize the layout container
 		this.datePicker = datePicker;
@@ -184,7 +184,7 @@ public class TableDataView implements IDataView {
 	* @param comparator - A comparator object used to sort the table
  	*
 	* @return nothing
-    */	
+        */	
 	private void sortTable(Comparator<CovidRecord> comparator) {
 		this.comparator = comparator;
 		border.setCenter(display(dataSet));
