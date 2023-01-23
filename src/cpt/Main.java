@@ -112,8 +112,6 @@ public class Main extends Application {
 						dataSet.getUnselectedCountries().add(item);	                		
 					}
 					updateCenterView();
-					// Check that it is working
-					System.out.println("Check box for "+item+" changed from "+wasSelected+" to "+isNowSelected);
 					}
 				);
 				return observable ;
